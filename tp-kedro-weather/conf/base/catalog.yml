@@ -1,0 +1,30 @@
+# Here you can define all your data sets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+
+# Dataset pour le tutoriel météo
+weather_data:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/weather_data.csv
+  load_args:
+    header: 0
+  save_args:
+    index: False
+
+Modele_entraine:
+  type: pickle.PickleDataset
+  filepath: data/06_models/modele.pkl
+
+metrics:
+  type: pickle.PickleDataset
+  filepath: data/06_models/metrics.pkl
+
+metrics_json:
+  type: json.JSONDataset
+  filepath: data/08_reporting/metrics.json
+
+metrics_visualization:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/metrics_chart.png
+  versioned: true
